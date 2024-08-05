@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web란 무엇인가?</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $('nav a').click(function(e){
+                e.preventDefault();
+            })
+
+            // 서버에서 JSON폴더에 html5.json 가져오기
+            $('#btn01').click(function(){
+                $.ajax({
+                    // 위치
+                    url:'./json/html5.json',
+                    // 데이터 종류
+                    dataType:'json',
+                    // 성공
+                    success:function(data){
+                        $('#title').text(data.title);
+                        $('#p1').text(data.p1);
+                        $('#p2').text(data.p2);
+                    },
+                    // 에러
+                    error:function(){
+                        alert('지금은 서비스 시간이 아닙니다');
+                        location.reload();
+                    }
+                })
+            })
+
+            // 서버에서 JSON폴더에 css3.json 가져오기
+            $('#btn02').click(function(){
+                $.ajax({
+                    url:'./json/css3.json',
+                    dataType:'json',
+                    success:function(data){
+                        $('#title').text(data.title);
+                        $('#p1').text(data.p1);
+                        $('#p2').text(data.p2);
+                    },
+                    error:function(){
+                        alert('지금은 서비스 시간이 아닙니다');
+                        location.reload();
+                    }
+                })
+            })
+
+            // 서버에서 JSON폴더에 js.json 가져오기
+            $('#btn03').click(function(){
+                $.ajax({
+                    url:'./json/js.json',
+                    dataType:'json',
+                    success:function(data){
+                        $('#title').text(data.title);
+                        $('#p1').text(data.p1);
+                        $('#p2').text(data.p2);
+                    },
+                    error:function(){
+                        alert('지금은 서비스 시간이 아닙니다');
+                        location.reload();
+                    }
+                })
+            })
+
+            
+        })
+    </script>
+</head>
+<body>
+    <h1><a href="./index.html">Web이란 무엇인가?</a></h1>
+    <nav>
+        <ol>
+            <li class="btn html5" id="btn01"><a href="#">html5</a></li>
+            <li class="btn css3" id="btn02"><a href="#">css3</a></li>
+            <li class="btn js" id="btn03"><a href="#">javaScript</a></li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="container">
+        <h2 class="title" id="title">Web이란</h2>
+        <p class="p1" id="p1">web Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta corporis, cum harum quo optio necessitatibus dolor distinctio quibusdam dignissimos ad consectetur dolorum explicabo. Fugiat consequuntur mollitia fuga. Veniam aut assumenda molestias. Provident expedita aperiam temporibus dolor, et, officiis porro nesciunt accusantium rem cupiditate impedit. Pariatur, dignissimos esse. Dolores, quidem nesciunt dicta harum assumenda expedita impedit! Voluptatibus exercitationem ea atque facere. Ducimus molestiae velit nulla iusto, deleniti omnis optio recusandae quia vitae error, enim quos consequatur eos assumenda repellat esse libero doloremque numquam accusamus quo, aspernatur dolore labore incidunt! Rem dignissimos nam veritatis voluptates iusto molestias? Possimus omnis cumque praesentium dolorum.</p>
+        <p class="p2" id="p2">web Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto odit quasi animi architecto dicta expedita, excepturi omnis totam, ex nam cumque incidunt officia. Esse earum pariatur aliquam natus at, eligendi magnam blanditiis repellat omnis, libero molestias! Eaque nesciunt doloremque temporibus ea assumenda tempora aliquid ab quo! Animi minima expedita fugiat?</p>
+    </div>
+</body>
+</html>
