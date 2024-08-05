@@ -11,62 +11,84 @@
                 e.preventDefault();
             })
 
-            // 서버에서 JSON폴더에 html5.json 가져오기
-            $('#btn01').click(function(){
+            $('.btn').click(function(){
+                let jsonName = $(this).attr('data-role');
+                fnJson(jsonName);
+            })
+
+            function fnJson(fileName){
                 $.ajax({
-                    // 위치
-                    url:'./json/html5.json',
-                    // 데이터 종류
+                    url:`./json/${fileName}.json`,
                     dataType:'json',
-                    // 성공
                     success:function(data){
                         $('#title').text(data.title);
                         $('#p1').text(data.p1);
                         $('#p2').text(data.p2);
                     },
-                    // 에러
                     error:function(){
-                        alert('지금은 서비스 시간이 아닙니다');
+                        alert('지금은 사용가능 시간이 아닙니다');
                         location.reload();
                     }
                 })
-            })
+            }
+
+
+            // 서버에서 JSON폴더에 html5.json 가져오기
+            // $('#btn01').click(function(){
+            //     $.ajax({
+            //         // 위치
+            //         url:'./json/html5.json',
+            //         // 데이터 종류
+            //         dataType:'json',
+            //         // 성공
+            //         success:function(data){
+            //             $('#title').text(data.title);
+            //             $('#p1').text(data.p1);
+            //             $('#p2').text(data.p2);
+            //         },
+            //         // 에러
+            //         error:function(){
+            //             alert('지금은 서비스 시간이 아닙니다');
+            //             location.reload();
+            //         }
+            //     })
+            // })
 
             // 서버에서 JSON폴더에 css3.json 가져오기
-            $('#btn02').click(function(){
-                $.ajax({
-                    url:'./json/css3.json',
-                    dataType:'json',
-                    success:function(data){
-                        $('#title').text(data.title);
-                        $('#p1').text(data.p1);
-                        $('#p2').text(data.p2);
-                    },
-                    error:function(){
-                        alert('지금은 서비스 시간이 아닙니다');
-                        location.reload();
-                    }
-                })
-            })
+            // $('#btn02').click(function(){
+            //     $.ajax({
+            //         url:'./json/css3.json',
+            //         dataType:'json',
+            //         success:function(data){
+            //             $('#title').text(data.title);
+            //             $('#p1').text(data.p1);
+            //             $('#p2').text(data.p2);
+            //         },
+            //         error:function(){
+            //             alert('지금은 서비스 시간이 아닙니다');
+            //             location.reload();
+            //         }
+            //     })
+            // })
 
             // 서버에서 JSON폴더에 js.json 가져오기
-            $('#btn03').click(function(){
-                $.ajax({
-                    url:'./json/js.json',
-                    dataType:'json',
-                    success:function(data){
-                        $('#title').text(data.title);
-                        $('#p1').text(data.p1);
-                        $('#p2').text(data.p2);
-                    },
-                    error:function(){
-                        alert('지금은 서비스 시간이 아닙니다');
-                        location.reload();
-                    }
-                })
-            })
+            // $('#btn03').click(function(){
+            //     $.ajax({
+            //         url:'./json/js.json',
+            //         dataType:'json',
+            //         success:function(data){
+            //             $('#title').text(data.title);
+            //             $('#p1').text(data.p1);
+            //             $('#p2').text(data.p2);
+            //         },
+            //         error:function(){
+            //             alert('지금은 서비스 시간이 아닙니다');
+            //             location.reload();
+            //         }
+            //     })
+            // })
 
-            
+
         })
     </script>
 </head>
@@ -74,9 +96,9 @@
     <h1><a href="./index.html">Web이란 무엇인가?</a></h1>
     <nav>
         <ol>
-            <li class="btn html5" id="btn01"><a href="#">html5</a></li>
-            <li class="btn css3" id="btn02"><a href="#">css3</a></li>
-            <li class="btn js" id="btn03"><a href="#">javaScript</a></li>
+            <li data-role="html5" class="btn html5" id="btn01"><a href="#">html5</a></li>
+            <li data-role="css3" class="btn css3" id="btn02"><a href="#">css3</a></li>
+            <li data-role="js" class="btn js" id="btn03"><a href="#">javaScript</a></li>
         </ol>
     </nav>
     <hr>
